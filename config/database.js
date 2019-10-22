@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports =  new Sequelize('codegig', 'postgres', '123456', {
+module.exports =  new Sequelize('codegig', 'postgres', 'Uranium-235', {
   host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,
