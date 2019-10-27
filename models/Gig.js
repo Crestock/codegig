@@ -19,7 +19,6 @@ const Gig = db.define(
   {
     contact_email: Sequelize.STRING
   },
-  { timestamps: false }
 );
 
 module.exports = Gig;

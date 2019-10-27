@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 const Gig = require('../models/Gig');
+const Product = require('../models/Product');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -15,6 +16,9 @@ router.get('/', (req, res) =>
 
 // Display add gig form
 router.get('/add', (req, res) => res.render('add'));
+
+//Display add product form
+router.get('/add-product', (req, res) => res.render('add-product'));
 
 // Add a gig
 router.post('/add', (req, res) => {
@@ -80,4 +84,49 @@ router.get('/search', (req, res) => {
     .catch(err => console.log(err));
 });
 
+
+// Add a product
+router.post("/add-product", (req, res) => {
+  let { name, minL, minW, minT } = req.body;
+  let errors = [];
+
+  // Validate Fields
+  if (!name) {
+    errors.push({ text: "Please add a product name" });
+  }
+  if (!minL) {
+    errors.push({ text: "Please add a minimum Length" });
+  }
+  if (!minW) {
+    errors.push({ text: "Please add a minimum Width" });
+  }
+  if (!minT) {
+    errors.push({ text: "Please add a minimum Thickness" });
+  }
+
+  // Check for errors
+  if (errors.length > 0) {
+    res.render("add", {
+      errors,
+      name,
+      minL,
+      minW,
+      minT
+    });
+  } else {
+    if (!name) {
+      name = "Product1";
+    } 
+
+    // Insert into table
+    Product.create({
+      name,
+      minL,
+      minW,
+      minT
+    })
+      .then(product => res.redirect("/gigs"))
+      .catch(err => console.log(err));
+  }
+});
 module.exports = router;

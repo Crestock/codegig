@@ -1,20 +1,33 @@
 <section id="gigs" class="container">
-    <h1>All Gigs</h1>
+  <h1>All Gigs</h1>
 
-    {{#each gigs}}
-      <div class="gig">
-      <h3>{{title}}</h3>
-      <p>{{description}}</p>
-      <ul>
-        <li>Budget: {{budget}}</li>
-        <li><a href="mailto:{{contact_email}}" class="btn btn-reverse">Apply Now</a></li>
-      </ul>
-      <div class="tech">
-        <small>Technologies Needed: <span>{{technologies}}</span></small>
-      </div>
+  {{#each gigs}}
+  <div class="gig">
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
+    <ul>
+      <li>Budget: {{budget}}</li>
+      <li><a href="mailto:{{contact_email}}" class="btn btn-reverse">Apply Now</a></li>
+    </ul>
+    <div class="tech">
+      <small>Technologies Needed: <span>{{technologies}}</span></small>
     </div>
-    {{else}}
-      <p>No gigs available</p>
-    {{/each}}
-    
-  </section>
+  </div>
+  {{else}}
+  <p>No gigs available</p>
+  {{/each}}
+
+</section>
+<section id="products" class="container">
+  <h1>All Products</h1>
+
+  {{#each products}}
+  <div class="product">
+    <h3>{{name}}</h3>
+    <p>{{minL}}</p>
+  </div>
+  {{else}}
+  <p>No products available</p>
+  {{/each}}
+
+</section>

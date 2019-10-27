@@ -20,4 +20,4 @@ const Product = db.define(
   { timestamps: false }
 );
 
-module.exports = Gig;
+module.exports = Product;
