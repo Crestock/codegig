@@ -1,0 +1,16 @@
+<section id="products" class="container">
+    <h1>All Gigs</h1>
+
+    {{#each gigs}}
+      <div class="product">
+      <h3>{{name}}</h3>
+      <p>{{minL,minW,minT}}</p>
+      <div class="tech">
+        <small>Technologies Needed: </small>
+      </div>
+    </div>
+    {{else}}
+      <p>No products available</p>
+    {{/each}}
+    
+  </section>
